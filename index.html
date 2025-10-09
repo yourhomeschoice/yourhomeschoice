@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -17,17 +17,25 @@
 
     h1, h2 {
       text-align: center;
-    }
-
-    /* Product cards */
-    .product-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 30px;
       margin-top: 30px;
     }
 
-    .product-card {
+    section {
+      padding: 40px 20px;
+    }
+
+    /* Product Grid Layout */
+    .product-grid, ul {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      margin: 30px 0;
+      list-style: none;
+      padding: 0;
+    }
+
+    /* Individual Product Card */
+    .product-card, li {
       background: #fff;
       border-radius: 16px;
       padding: 20px;
@@ -36,12 +44,12 @@
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
-    .product-card:hover {
+    .product-card:hover, li:hover {
       transform: translateY(-5px);
       box-shadow: 0 8px 20px rgba(0,0,0,0.15);
     }
 
-    .product-card img {
+    .product-card img, li img {
       width: 100%;
       max-width: 400px;
       border-radius: 12px;
@@ -49,70 +57,85 @@
       transition: transform 0.3s ease;
     }
 
-    .product-card img:hover {
+    .product-card img:hover, li img:hover {
       transform: scale(1.05);
     }
 
-    .product-card h3 {
+    .product-card h3, li h3 {
       margin-top: 15px;
       font-size: 20px;
       font-weight: bold;
     }
 
-    .product-card p {
+    .product-card p, li p {
       font-size: 16px;
       color: #555;
     }
 
-    @media (max-width: 600px) {
-      .product-card img {
-        max-width: 90%;
-      }
+    .product-card a, li a {
+      display: inline-block;
+      background: #0078ff;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      margin-top: 10px;
+      transition: background 0.3s ease;
+    }
 
+    .product-card a:hover, li a:hover {
+      background: #005ec4;
+    }
+
+    /* Sticky Navigation with Shadow */
+    nav.sticky-nav {
+      position: sticky;
+      top: 0;
+      background: #0078ff;
+      padding: 15px 0;
+      text-align: center;
+      z-index: 1000;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+
+    nav.sticky-nav a {
+      color: white;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+
+    nav.sticky-nav a:hover {
+      color: #ffda79;
+    }
+
+    /* Footer */
+    footer {
+      background:#333;
+      color:#fff;
+      text-align:center;
+      padding:20px;
+      margin-top:50px;
+    }
+
+    @media (max-width: 600px) {
       nav.sticky-nav {
         padding: 10px 0;
       }
-
       nav.sticky-nav a {
         display: block;
         margin: 8px 0;
       }
+
+      .product-card img, li img {
+        max-width: 100%;
+      }
+
+      .product-grid, ul {
+        grid-template-columns: 1fr;
+      }
     }
-
-   /* Sticky Navigation with Shadow */
-nav.sticky-nav {
-  position: sticky;
-  top: 0;
-  background: #0078ff;
-  padding: 15px 0;
-  text-align: center;
-  z-index: 1000;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.2); /* subtle shadow */
-}
-
-nav.sticky-nav a {
-  color: white;
-  margin: 0 15px;
-  text-decoration: none;
-  font-weight: bold;
-  transition: color 0.3s ease;
-}
-
-nav.sticky-nav a:hover {
-  color: #ffda79;
-}
-
-@media (max-width: 600px) {
-  nav.sticky-nav {
-    padding: 10px 0;
-  }
-  nav.sticky-nav a {
-    display: block;
-    margin: 8px 0;
-  }
-}
-
-
   </style>
 </head>
 
@@ -129,97 +152,108 @@ nav.sticky-nav a:hover {
 <h1>YourHomesChoice</h1>
 <p style="text-align:center;">Welcome to <strong>YourHomesChoice</strong> – your guide to smart kitchen gadgets, home organization tools, and digital resources that make everyday life easier, smarter, and more enjoyable!</p>
 
+<!-- Cooking Section -->
 <section id="cooking">
   <h2>Cooking Made Easy</h2>
   <ul>
     <li>
-      <img src="images/smart-blender.jpg" alt="Smart Blender" width="380">
-      <h3><strong>Smart Blender</strong></h3>
+      <img src="images/smart-blender.jpg" alt="Smart Blender">
+      <h3>Smart Blender</h3>
       <p>Powerful, intelligent blending with app controls for smoothies, soups, and sauces.</p>
-      <a href="YOUR-AFFILIATE-LINK" target="_blank"><button>Check Price</button></a>
+      <a href="YOUR-AFFILIATE-LINK" target="_blank">Check Price</a>
     </li>
     <li>
-      <img src="images/air-fryer.jpg" alt="Air Fryer" width="380">
-      <h3><strong>Air Fryer</strong></h3>
+      <img src="images/air-fryer.jpg" alt="Air Fryer">
+      <h3>Air Fryer</h3>
       <p>Healthier cooking with 80% less oil and quick, even crisping for your meals.</p>
-      <a href="YOUR-AFFILIATE-LINK" target="_blank"><button>Check Price</button></a>
+      <a href="YOUR-AFFILIATE-LINK" target="_blank">Check Price</a>
     </li>
     <li>
-      <img src="images/coffee-maker.jpg" alt="Coffee Maker" width="380">
-      <h3><strong>Coffee Maker</strong></h3>
+      <img src="images/coffee-maker.jpg" alt="Coffee Maker">
+      <h3>Coffee Maker</h3>
       <p>Wake up to fresh coffee with Wi-Fi scheduling and brew strength control.</p>
-      <a href="YOUR-AFFILIATE-LINK" target="_blank"><button>Check Price</button></a>
+      <a href="YOUR-AFFILIATE-LINK" target="_blank">Check Price</a>
     </li>
   </ul>
 </section>
 
+<!-- Organize & Optimize Section -->
 <section id="organize-optimize">
   <h2>Organize & Optimize</h2>
-
-  <div class="product-card">
-    <img src="images/storage_jars.jpg" alt="Airtight Storage Jars">
-    <h3><b>Airtight Storage Jars</b></h3>
-    <p>Keep ingredients fresh with clear, space-saving airtight containers — perfect for modern kitchens.</p>
-    <a href="#" target="_blank">Shop Now</a>
-  </div>
-
-  <div class="product-card">
-    <img src="images/drawer_organizer.jpg" alt="Adjustable Drawer Organizer">
-    <h3><b>Adjustable Drawer Organizer</b></h3>
-    <p>Tidy your kitchen drawers effortlessly — adjustable dividers for cutlery and utensils.</p>
-    <a href="#" target="_blank">Shop Now</a>
-  </div>
-
-  <div class="product-card">
-    <img src="images/spice_rack1.jpg" alt="Rotating Spice Rack">
-    <h3><b>Rotating Spice Rack</b></h3>
-    <p>Access all your spices with ease using this sleek rotating rack design.</p>
-    <a href="#" target="_blank">Shop Now</a>
+  <div class="product-grid">
+    <div class="product-card">
+      <img src="images/storage_jars.jpg" alt="Airtight Storage Jars">
+      <h3>Airtight Storage Jars</h3>
+      <p>Keep ingredients fresh with clear, space-saving airtight containers — perfect for modern kitchens.</p>
+      <a href="#" target="_blank">Shop Now</a>
+    </div>
+    <div class="product-card">
+      <img src="images/drawer_organizer.jpg" alt="Adjustable Drawer Organizer">
+      <h3>Adjustable Drawer Organizer</h3>
+      <p>Tidy your kitchen drawers effortlessly — adjustable dividers for cutlery and utensils.</p>
+      <a href="#" target="_blank">Shop Now</a>
+    </div>
+    <div class="product-card">
+      <img src="images/spice_rack1.jpg" alt="Rotating Spice Rack">
+      <h3>Rotating Spice Rack</h3>
+      <p>Access all your spices with ease using this sleek rotating rack design.</p>
+      <a href="#" target="_blank">Shop Now</a>
+    </div>
   </div>
 </section>
 
+<!-- Tech Section -->
 <section id="tech">
   <h2>Tech for Taste</h2>
   <ul>
     <li>
-      <img src="images/thermometer.jpg" alt="Thermometer" width="380">
-      <h3><strong>Thermometer</strong></h3>
+      <img src="images/thermometer.jpg" alt="Thermometer">
+      <h3>Thermometer</h3>
       <p>Bluetooth-connected meat thermometer for perfect steaks and roasts every time.</p>
-      <a href="YOUR-AFFILIATE-LINK" target="_blank"><button>Check Price</button></a>
+      <a href="YOUR-AFFILIATE-LINK" target="_blank">Check Price</a>
     </li>
     <li>
-      <img src="images/sous-vide.jpg" alt="Sous Vide" width="380">
-      <h3><strong>Sous Vide</strong></h3>
+      <img src="images/sous-vide.jpg" alt="Sous Vide">
+      <h3>Sous Vide</h3>
       <p>Restaurant-quality precision cooking with app control and temperature accuracy.</p>
-      <a href="YOUR-AFFILIATE-LINK" target="_blank"><button>Check Price</button></a>
+      <a href="YOUR-AFFILIATE-LINK" target="_blank">Check Price</a>
     </li>
     <li>
-      <img src="images/scale.jpg" alt="Scale" width="380">
-      <h3><strong>Scale</strong></h3>
+      <img src="images/scale.jpg" alt="Scale">
+      <h3>Scale</h3>
       <p>Track ingredients and sync with your nutrition app for perfect meal prep.</p>
-      <a href="YOUR-AFFILIATE-LINK" target="_blank"><button>Check Price</button></a>
+      <a href="YOUR-AFFILIATE-LINK" target="_blank">Check Price</a>
     </li>
   </ul>
 </section>
 
+<!-- Digital Section -->
 <section id="digital">
   <h2>Smart Living Guides (Digital)</h2>
   <ul>
-    <li><strong>DIY Home Improvement Guide</strong> – Learn simple, money-saving upgrades for your home. <a href="YOUR-AFFILIATE-LINK" target="_blank"><button>Check Here</button></a></li>
-    <li><strong>Eco Living eBook</strong> – Start living greener with practical, sustainable home ideas. <a href="YOUR-AFFILIATE-LINK" target="_blank"><button>Check Here</button></a></li>
-    <li><strong>Minimalist Home Masterclass</strong> – Organize your life and space for stress-free living. <a href="YOUR-AFFILIATE-LINK" target="_blank"><button>Check Here</button></a></li>
+    <li>
+      <strong>DIY Home Improvement Guide</strong> – Learn simple, money-saving upgrades for your home.
+      <a href="YOUR-AFFILIATE-LINK" target="_blank">Check Here</a>
+    </li>
+    <li>
+      <strong>Eco Living eBook</strong> – Start living greener with practical, sustainable home ideas.
+      <a href="YOUR-AFFILIATE-LINK" target="_blank">Check Here</a>
+    </li>
+    <li>
+      <strong>Minimalist Home Masterclass</strong> – Organize your life and space for stress-free living.
+      <a href="YOUR-AFFILIATE-LINK" target="_blank">Check Here</a>
+    </li>
   </ul>
 </section>
 
 <!-- Footer -->
-<footer style="background:#333; color:#fff; text-align:center; padding:20px; margin-top:50px;">
+<footer>
   <p>© 2025 <strong>YourHomesChoice</strong> — Simplify. Upgrade. Enjoy.</p>
   <p style="font-size:0.9em;">
-    As an Amazon Associate, we may earn from qualifying purchases. 
+    As an Amazon Associate, we may earn from qualifying purchases.
     <a href="#" style="color:#0078ff; text-decoration:none;">Learn More</a>
   </p>
 </footer>
 
 </body>
 </html>
-
