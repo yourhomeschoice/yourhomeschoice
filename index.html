@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -79,27 +79,39 @@
       }
     }
 
-    /* Sticky Navigation */
-    nav.sticky-nav {
-      position: sticky;
-      top: 0;
-      background: #0078ff;
-      padding: 15px 0;
-      text-align: center;
-      z-index: 1000;
-    }
+   /* Sticky Navigation with Shadow */
+nav.sticky-nav {
+  position: sticky;
+  top: 0;
+  background: #0078ff;
+  padding: 15px 0;
+  text-align: center;
+  z-index: 1000;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2); /* subtle shadow */
+}
 
-    nav.sticky-nav a {
-      color: white;
-      margin: 0 15px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: color 0.3s ease;
-    }
+nav.sticky-nav a {
+  color: white;
+  margin: 0 15px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
 
-    nav.sticky-nav a:hover {
-      color: #ffda79;
-    }
+nav.sticky-nav a:hover {
+  color: #ffda79;
+}
+
+@media (max-width: 600px) {
+  nav.sticky-nav {
+    padding: 10px 0;
+  }
+  nav.sticky-nav a {
+    display: block;
+    margin: 8px 0;
+  }
+}
+
 
   </style>
 </head>
