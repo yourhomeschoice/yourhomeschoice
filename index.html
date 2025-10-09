@@ -12,44 +12,44 @@
       padding: 0;
       background-color: #f9f9f9;
       color: #333;
-      scroll-behavior: smooth; /* Smooth scrolling */
+      scroll-behavior: smooth;
     }
 
     h1, h2 {
       text-align: center;
-      margin-top: 30px;
     }
 
-    section {
-      padding: 40px 20px;
-    }
-
-    /* Product Grid Layout */
-    .product-grid, ul {
+    /* Product cards grid */
+    .product-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 30px;
-      margin: 30px 0;
-      list-style: none;
-      padding: 0;
+      margin-top: 30px;
     }
 
-    /* Individual Product Card */
-    .product-card, li {
+    .product-card {
       background: #fff;
       border-radius: 16px;
       padding: 20px;
       text-align: center;
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
+      opacity: 0; /* For fade-in scroll */
+      transform: translateY(20px);
     }
 
-    .product-card:hover, li:hover {
+    .product-card.visible {
+      opacity: 1;
+      transform: translateY(0);
+      transition: all 0.6s ease-out;
+    }
+
+    .product-card:hover {
       transform: translateY(-5px);
       box-shadow: 0 8px 20px rgba(0,0,0,0.15);
     }
 
-    .product-card img, li img {
+    .product-card img {
       width: 100%;
       max-width: 400px;
       border-radius: 12px;
@@ -57,37 +57,52 @@
       transition: transform 0.3s ease;
     }
 
-    .product-card img:hover, li img:hover {
+    .product-card img:hover {
       transform: scale(1.05);
     }
 
-    .product-card h3, li h3 {
+    .product-card h3 {
       margin-top: 15px;
       font-size: 20px;
       font-weight: bold;
     }
 
-    .product-card p, li p {
+    .product-card p {
       font-size: 16px;
       color: #555;
     }
 
-    .product-card a, li a {
-      display: inline-block;
+    /* Button with arrow animation */
+    .btn {
+      display: inline-flex;
+      align-items: center;
       background: #0078ff;
       color: #fff;
       padding: 10px 20px;
       border-radius: 8px;
       text-decoration: none;
       margin-top: 10px;
-      transition: background 0.3s ease;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      border: none;
     }
 
-    .product-card a:hover, li a:hover {
+    .btn span.arrow {
+      display: inline-block;
+      margin-left: 8px;
+      transition: transform 0.3s ease;
+    }
+
+    .btn:hover {
       background: #005ec4;
     }
 
-    /* Sticky Navigation with Shadow */
+    .btn:hover span.arrow {
+      transform: translateX(5px);
+    }
+
+    /* Sticky Navigation with shadow */
     nav.sticky-nav {
       position: sticky;
       top: 0;
@@ -110,30 +125,16 @@
       color: #ffda79;
     }
 
-    /* Footer */
-    footer {
-      background:#333;
-      color:#fff;
-      text-align:center;
-      padding:20px;
-      margin-top:50px;
-    }
-
     @media (max-width: 600px) {
+      .product-card img {
+        max-width: 90%;
+      }
       nav.sticky-nav {
         padding: 10px 0;
       }
       nav.sticky-nav a {
         display: block;
         margin: 8px 0;
-      }
-
-      .product-card img, li img {
-        max-width: 100%;
-      }
-
-      .product-grid, ul {
-        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -152,108 +153,114 @@
 <h1>YourHomesChoice</h1>
 <p style="text-align:center;">Welcome to <strong>YourHomesChoice</strong> – your guide to smart kitchen gadgets, home organization tools, and digital resources that make everyday life easier, smarter, and more enjoyable!</p>
 
-<!-- Cooking Section -->
 <section id="cooking">
   <h2>Cooking Made Easy</h2>
   <ul>
-    <li>
+    <li class="product-card">
       <img src="images/smart-blender.jpg" alt="Smart Blender">
-      <h3>Smart Blender</h3>
+      <h3><strong>Smart Blender</strong></h3>
       <p>Powerful, intelligent blending with app controls for smoothies, soups, and sauces.</p>
-      <a href="YOUR-AFFILIATE-LINK" target="_blank">Check Price</a>
+      <button class="btn">Check Price <span class="arrow">→</span></button>
     </li>
-    <li>
+    <li class="product-card">
       <img src="images/air-fryer.jpg" alt="Air Fryer">
-      <h3>Air Fryer</h3>
+      <h3><strong>Air Fryer</strong></h3>
       <p>Healthier cooking with 80% less oil and quick, even crisping for your meals.</p>
-      <a href="YOUR-AFFILIATE-LINK" target="_blank">Check Price</a>
+      <button class="btn">Check Price <span class="arrow">→</span></button>
     </li>
-    <li>
+    <li class="product-card">
       <img src="images/coffee-maker.jpg" alt="Coffee Maker">
-      <h3>Coffee Maker</h3>
+      <h3><strong>Coffee Maker</strong></h3>
       <p>Wake up to fresh coffee with Wi-Fi scheduling and brew strength control.</p>
-      <a href="YOUR-AFFILIATE-LINK" target="_blank">Check Price</a>
+      <button class="btn">Check Price <span class="arrow">→</span></button>
     </li>
   </ul>
 </section>
 
-<!-- Organize & Optimize Section -->
 <section id="organize-optimize">
   <h2>Organize & Optimize</h2>
-  <div class="product-grid">
-    <div class="product-card">
-      <img src="images/storage_jars.jpg" alt="Airtight Storage Jars">
-      <h3>Airtight Storage Jars</h3>
-      <p>Keep ingredients fresh with clear, space-saving airtight containers — perfect for modern kitchens.</p>
-      <a href="#" target="_blank">Shop Now</a>
-    </div>
-    <div class="product-card">
-      <img src="images/drawer_organizer.jpg" alt="Adjustable Drawer Organizer">
-      <h3>Adjustable Drawer Organizer</h3>
-      <p>Tidy your kitchen drawers effortlessly — adjustable dividers for cutlery and utensils.</p>
-      <a href="#" target="_blank">Shop Now</a>
-    </div>
-    <div class="product-card">
-      <img src="images/spice_rack1.jpg" alt="Rotating Spice Rack">
-      <h3>Rotating Spice Rack</h3>
-      <p>Access all your spices with ease using this sleek rotating rack design.</p>
-      <a href="#" target="_blank">Shop Now</a>
-    </div>
+  <div class="product-card">
+    <img src="images/storage_jars.jpg" alt="Airtight Storage Jars">
+    <h3><b>Airtight Storage Jars</b></h3>
+    <p>Keep ingredients fresh with clear, space-saving airtight containers — perfect for modern kitchens.</p>
+    <button class="btn">Shop Now <span class="arrow">→</span></button>
+  </div>
+  <div class="product-card">
+    <img src="images/drawer_organizer.jpg" alt="Adjustable Drawer Organizer">
+    <h3><b>Adjustable Drawer Organizer</b></h3>
+    <p>Tidy your kitchen drawers effortlessly — adjustable dividers for cutlery and utensils.</p>
+    <button class="btn">Shop Now <span class="arrow">→</span></button>
+  </div>
+  <div class="product-card">
+    <img src="images/spice_rack1.jpg" alt="Rotating Spice Rack">
+    <h3><b>Rotating Spice Rack</b></h3>
+    <p>Access all your spices with ease using this sleek rotating rack design.</p>
+    <button class="btn">Shop Now <span class="arrow">→</span></button>
   </div>
 </section>
 
-<!-- Tech Section -->
 <section id="tech">
   <h2>Tech for Taste</h2>
   <ul>
-    <li>
+    <li class="product-card">
       <img src="images/thermometer.jpg" alt="Thermometer">
-      <h3>Thermometer</h3>
+      <h3><strong>Thermometer</strong></h3>
       <p>Bluetooth-connected meat thermometer for perfect steaks and roasts every time.</p>
-      <a href="YOUR-AFFILIATE-LINK" target="_blank">Check Price</a>
+      <button class="btn">Check Price <span class="arrow">→</span></button>
     </li>
-    <li>
+    <li class="product-card">
       <img src="images/sous-vide.jpg" alt="Sous Vide">
-      <h3>Sous Vide</h3>
+      <h3><strong>Sous Vide</strong></h3>
       <p>Restaurant-quality precision cooking with app control and temperature accuracy.</p>
-      <a href="YOUR-AFFILIATE-LINK" target="_blank">Check Price</a>
+      <button class="btn">Check Price <span class="arrow">→</span></button>
     </li>
-    <li>
+    <li class="product-card">
       <img src="images/scale.jpg" alt="Scale">
-      <h3>Scale</h3>
+      <h3><strong>Scale</strong></h3>
       <p>Track ingredients and sync with your nutrition app for perfect meal prep.</p>
-      <a href="YOUR-AFFILIATE-LINK" target="_blank">Check Price</a>
+      <button class="btn">Check Price <span class="arrow">→</span></button>
     </li>
   </ul>
 </section>
 
-<!-- Digital Section -->
 <section id="digital">
   <h2>Smart Living Guides (Digital)</h2>
   <ul>
-    <li>
-      <strong>DIY Home Improvement Guide</strong> – Learn simple, money-saving upgrades for your home.
-      <a href="YOUR-AFFILIATE-LINK" target="_blank">Check Here</a>
-    </li>
-    <li>
-      <strong>Eco Living eBook</strong> – Start living greener with practical, sustainable home ideas.
-      <a href="YOUR-AFFILIATE-LINK" target="_blank">Check Here</a>
-    </li>
-    <li>
-      <strong>Minimalist Home Masterclass</strong> – Organize your life and space for stress-free living.
-      <a href="YOUR-AFFILIATE-LINK" target="_blank">Check Here</a>
-    </li>
+    <li class="product-card"><strong>DIY Home Improvement Guide</strong> – Learn simple, money-saving upgrades for your home. <button class="btn">Check Here <span class="arrow">→</span></button></li>
+    <li class="product-card"><strong>Eco Living eBook</strong> – Start living greener with practical, sustainable home ideas. <button class="btn">Check Here <span class="arrow">→</span></button></li>
+    <li class="product-card"><strong>Minimalist Home Masterclass</strong> – Organize your life and space for stress-free living. <button class="btn">Check Here <span class="arrow">→</span></button></li>
   </ul>
 </section>
 
 <!-- Footer -->
-<footer>
+<footer style="background:#333; color:#fff; text-align:center; padding:20px; margin-top:50px;">
   <p>© 2025 <strong>YourHomesChoice</strong> — Simplify. Upgrade. Enjoy.</p>
   <p style="font-size:0.9em;">
-    As an Amazon Associate, we may earn from qualifying purchases.
+    As an Amazon Associate, we may earn from qualifying purchases. 
     <a href="#" style="color:#0078ff; text-decoration:none;">Learn More</a>
   </p>
 </footer>
+
+<!-- Scroll Fade-in Script -->
+<script>
+const faders = document.querySelectorAll('.product-card, li');
+const appearOptions = {
+  threshold: 0.1,
+  rootMargin: "0px 0px -50px 0px"
+};
+
+const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) return;
+    entry.target.classList.add('visible');
+    appearOnScroll.unobserve(entry.target);
+  });
+}, appearOptions);
+
+faders.forEach(fader => {
+  appearOnScroll.observe(fader);
+});
+</script>
 
 </body>
 </html>
